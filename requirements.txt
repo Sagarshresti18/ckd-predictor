@@ -1,0 +1,7 @@
+pandas
+scikit-learn
+imbalanced-learn
+joblib
+streamlit
+matplotlib
+xgboost   # optional if you used it for model training
