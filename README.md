@@ -1,28 +1,59 @@
-Chronic Kidney Disease Prediction
-Project Overview
-This project implements a machine learning pipeline to predict Chronic Kidney Disease (CKD) based on clinical and laboratory features. It includes data preprocessing, model training using Random Forest with imbalance handling, evaluation, and a user interface for interactive predictions.
+# Chronic Kidney Disease (CKD) Prediction
 
-The goal is to assist in early CKD detection through an interpretable, accurate predictive model.
+## Project Overview
 
-Dataset
-Source: [Provide source, e.g., UCI Machine Learning Repository or your custom data]
+This project predicts Chronic Kidney Disease (CKD) using machine learning on clinical and laboratory data of patients. It implements data preprocessing, handles class imbalance with SMOTE, employs Random Forest (and optionally XGBoost) for model training with hyperparameter tuning, and evaluates performance using classification reports and confusion matrices. An interactive Streamlit app serves as a user-friendly interface for real-time CKD risk prediction.
 
-Description: Contains clinical and laboratory features from patients, labeled with CKD diagnosis classes.
+Early prediction of CKD is crucial for timely intervention and improving patient outcomes. This repository provides a modular, reproducible, and extensible framework for CKD detection using ML.
 
-Number of samples: 427 (original), easily extendable by adding more rows to data/chronic_kidney_disease.csv.
+## Features
 
-Key features: age, blood pressure, specific gravity, albumin, sugar, red blood cells, pus cells, etc
-lzy/
-├── data/
-│   └── chronic_kidney_disease.csv       # Raw dataset CSV
-├── models/
-│   └── ckd_model.pkl                     # Saved trained model file
-├── notebooks/
-│   └── exploration.ipynb                 # Exploratory Data Analysis & Visualization
-├── src/
-│   ├── data_preprocessing.py             # Loading and preprocessing dataset
-│   ├── model_training.py                  # Model training & hyperparameter tuning
-│   ├── model_evaluation.py                # Model evaluation & confusion matrix plotting
-│   └── app.py                            # Streamlit app for CKD prediction
-├── README.md                             # This file
-└── requirements.txt                      # Python dependencies
+- Data loading and cleaning (imputation and encoding)
+- Handling class imbalance with SMOTE
+- Model training with Random Forest and hyperparameter tuning
+- Optional integration of XGBoost classifier
+- Detailed evaluation metrics including confusion matrix visualization
+- Streamlit-based interactive web app for input and prediction
+- Modular code structure for easy extension
+
+## Installation
+1. Clone the repository:
+git clone https://github.com/Sagarshresti18/ckd-predictor.git
+cd ckd-predictor
+2. (Optional) Create a virtual environment:
+python -m venv venv
+source venv/bin/activate # On Windows: venv\Scripts\activate
+3. Install required dependencies:
+pip install -r requirements.txt
+
+*Make sure `requirements.txt` is updated with packages like pandas, scikit-learn, imbalanced-learn, xgboost, streamlit, etc.*
+
+## Usage
+
+### Train and evaluate model
+Run your main script or notebook to preprocess data, train your model, and evaluate metrics.
+python train.py
+
+*(Adjust command based on your project’s actual script)*
+### Run the Streamlit app
+To launch the interactive app for CKD prediction:
+streamlit run app.py
+Then open the URL shown (usually http://localhost:8501) in your browser.
+
+## Project Structure
+/ckd-prediction
+│
+├── data/ # Dataset files (if included)
+├── models/ # Saved trained models
+├── notebooks/ # Jupyter notebooks (if any)
+├── src/ # Source code files
+├── app.py # Streamlit web app
+├── requirements.txt # Required Python packages
+├── README.md # Project documentation
+└── .gitignore # Git ignore rules
+
+
+
+
+
+
