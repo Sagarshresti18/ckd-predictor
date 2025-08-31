@@ -1,7 +1,7 @@
 pandas
 scikit-learn
-imbalanced-learn
+numpy
 joblib
-streamlit
+flask
 matplotlib
-xgboost   # optional if you used it for model training
+
