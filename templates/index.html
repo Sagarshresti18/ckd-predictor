@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CKD Prediction</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: linear-gradient(135deg, #f8ffae 0%, #43cea2 100%);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 1.5px 6px rgba(67,206,162,0.2);
+            border-radius: 20px;
+            padding: 32px 40px;
+            width: 420px;
+            max-width: 95vw;
+        }
+        h2 {
+            text-align: center;
+            color: #185a9d;
+            margin-bottom: 24px;
+            text-shadow: 1px 1px 8px #43cea2;
+        }
+        form label {
+            display: block;
+            margin-top: 14px;
+            color: #185a9d;
+            font-weight: 500;
+        }
+        form input, form select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 4px;
+            border-radius: 8px;
+            border: 1px solid #43cea2;
+            background: rgba(255,255,255,0.8);
+            font-size: 1em;
+            box-shadow: 0 2px 8px rgba(67,206,162,0.08);
+        }
+        .submit-btn {
+            margin-top: 24px;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(31,38,135,0.15);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .submit-btn:hover {
+            transform: scale(1.04);
+            background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Chronic Kidney Disease Prediction</h2>
+        <form action="/predict" method="post">
+            <label for="age">Age:</label>
+            <input type="number" name="age" required>
+
+            <label for="bp">Blood Pressure:</label>
+            <input type="number" name="bp" required>
+
+            <label for="sg">Specific Gravity:</label>
+            <input type="text" name="sg" required>
+
+            <label for="al">Albumin:</label>
+            <input type="number" name="al" required>
+
+            <label for="su">Sugar:</label>
+            <input type="number" name="su" required>
+
+            <label for="rbc">Red Blood Cells:</label>
+            <select name="rbc" required>
+                <option value="0">Normal</option>
+                <option value="1">Abnormal</option>
+            </select>
+
+            <label for="pc">Pus Cell:</label>
+            <select name="pc" required>
+                <option value="0">Normal</option>
+                <option value="1">Abnormal</option>
+            </select>
+
+            <label for="pcc">Pus Cell Clumps:</label>
+            <select name="pcc" required>
+                <option value="0">Not Present</option>
+                <option value="1">Present</option>
+            </select>
+
+            <label for="ba">Bacteria:</label>
+            <select name="ba" required>
+                <option value="0">Not Present</option>
+                <option value="1">Present</option>
+            </select>
+
+            <label for="bgr">Blood Glucose Random:</label>
+            <input type="number" name="bgr" required>
+
+            <label for="bu">Blood Urea:</label>
+            <input type="number" name="bu" required>
+
+            <label for="sc">Serum Creatinine:</label>
+            <input type="number" name="sc" required>
+
+            <label for="sod">Sodium:</label>
+            <input type="number" name="sod" required>
+
+            <label for="pot">Potassium:</label>
+            <input type="number" name="pot" required>
+
+            <label for="hemo">Hemoglobin:</label>
+            <input type="number" name="hemo" required>
+
+            <label for="pcv">Packed Cell Volume:</label>
+            <input type="number" name="pcv" required>
+
+            <label for="wc">White Blood Cell Count:</label>
+            <input type="number" name="wc" required>
+
+            <label for="rc">Red Blood Cell Count:</label>
+            <input type="number" name="rc" required>
+
+            <label for="htn">Hypertension:</label>
+            <select name="htn" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="dm">Diabetes Mellitus:</label>
+            <select name="dm" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="cad">Coronary Artery Disease:</label>
+            <select name="cad" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="appet">Appetite:</label>
+            <select name="appet" required>
+                <option value="0">Good</option>
+                <option value="1">Poor</option>
+            </select>
+
+            <label for="pe">Pedal Edema:</label>
+            <select name="pe" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="ane">Anemia:</label>
+            <select name="ane" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <button class="submit-btn" type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
