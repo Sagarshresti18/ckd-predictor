@@ -25,7 +25,7 @@ def predict():
         int(request.form['pcc']),
         int(request.form['ba']),
         float(request.form['bgr']),
-        int(request.form['bu']),  # Blood Urea - missing in original
+        int(request.form['bu']), 
         float(request.form['sc']),
         float(request.form['sod']),
         float(request.form['pot']),
@@ -47,4 +47,5 @@ def predict():
     return render_template('result.html', result=result)
 
 if __name__ == '__main__':
+
     app.run(debug=True)
