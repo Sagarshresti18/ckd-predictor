@@ -1,176 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Declares the document type as HTML5 -->
+<html lang="en"> <!-- Sets the language of the document to English -->
 <head>
-    <meta charset="UTF-8">
-    <title>CKD Prediction</title>
-    <style>
-        body {
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container {
-            background: linear-gradient(135deg, #f8ffae 0%, #43cea2 100%);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 1.5px 6px rgba(67,206,162,0.2);
-            border-radius: 20px;
-            padding: 32px 40px;
-            width: 420px;
-            max-width: 95vw;
-        }
-        h2 {
-            text-align: center;
-            color: #185a9d;
-            margin-bottom: 24px;
-            text-shadow: 1px 1px 8px #43cea2;
-        }
-        form label {
-            display: block;
-            margin-top: 14px;
-            color: #185a9d;
-            font-weight: 500;
-        }
-        form input, form select {
-            width: 100%;
-            padding: 8px 10px;
-            margin-top: 4px;
-            border-radius: 8px;
-            border: 1px solid #43cea2;
-            background: rgba(255,255,255,0.8);
-            font-size: 1em;
-            box-shadow: 0 2px 8px rgba(67,206,162,0.08);
-        }
-        .submit-btn {
-            margin-top: 24px;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
-            color: #fff;
-            font-size: 1.1em;
-            font-weight: bold;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(31,38,135,0.15);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .submit-btn:hover {
-            transform: scale(1.04);
-            background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
-        }
-    </style>
+    <meta charset="UTF-8"> <!-- Sets character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design on mobile devices -->
+    <title>CKD Detection System</title> <!-- Title shown in browser tab -->
+    <!-- Link to external CSS file using Flask's url_for function -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h2>Chronic Kidney Disease Prediction</h2>
-        <form action="/predict" method="post">
-            <label for="age">Age:</label>
-            <input type="number" name="age" required>
-
-            <label for="bp">Blood Pressure:</label>
-            <input type="number" name="bp" required>
-
-            <label for="sg">Specific Gravity:</label>
-            <input type="text" name="sg" required>
-
-            <label for="al">Albumin:</label>
-            <input type="number" name="al" required>
-
-            <label for="su">Sugar:</label>
-            <input type="number" name="su" required>
-
-            <label for="rbc">Red Blood Cells:</label>
-            <select name="rbc" required>
-                <option value="0">Normal</option>
-                <option value="1">Abnormal</option>
-            </select>
-
-            <label for="pc">Pus Cell:</label>
-            <select name="pc" required>
-                <option value="0">Normal</option>
-                <option value="1">Abnormal</option>
-            </select>
-
-            <label for="pcc">Pus Cell Clumps:</label>
-            <select name="pcc" required>
-                <option value="0">Not Present</option>
-                <option value="1">Present</option>
-            </select>
-
-            <label for="ba">Bacteria:</label>
-            <select name="ba" required>
-                <option value="0">Not Present</option>
-                <option value="1">Present</option>
-            </select>
-
-            <label for="bgr">Blood Glucose Random:</label>
-            <input type="number" name="bgr" required>
-
-            <label for="bu">Blood Urea:</label>
-            <input type="number" name="bu" required>
-
-            <label for="sc">Serum Creatinine:</label>
-            <input type="number" name="sc" required>
-
-            <label for="sod">Sodium:</label>
-            <input type="number" name="sod" required>
-
-            <label for="pot">Potassium:</label>
-            <input type="number" name="pot" required>
-
-            <label for="hemo">Hemoglobin:</label>
-            <input type="number" name="hemo" required>
-
-            <label for="pcv">Packed Cell Volume:</label>
-            <input type="number" name="pcv" required>
-
-            <label for="wc">White Blood Cell Count:</label>
-            <input type="number" name="wc" required>
-
-            <label for="rc">Red Blood Cell Count:</label>
-            <input type="number" name="rc" required>
-
-            <label for="htn">Hypertension:</label>
-            <select name="htn" required>
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
-
-            <label for="dm">Diabetes Mellitus:</label>
-            <select name="dm" required>
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
-
-            <label for="cad">Coronary Artery Disease:</label>
-            <select name="cad" required>
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
-
-            <label for="appet">Appetite:</label>
-            <select name="appet" required>
-                <option value="0">Good</option>
-                <option value="1">Poor</option>
-            </select>
-
-            <label for="pe">Pedal Edema:</label>
-            <select name="pe" required>
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
-
-            <label for="ane">Anemia:</label>
-            <select name="ane" required>
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
-
-            <button class="submit-btn" type="submit">Predict</button>
-        </form>
+    <!-- Background animation container -->
+    <div class="bg-animation">
+        <div class="wave"></div> <!-- Decorative wave animation -->
     </div>
+
+    <!-- Language selection buttons -->
+    <div class="language-toggle">
+        <button class="language-btn active" onclick="setLanguage('en')">English</button>
+        <button class="language-btn" onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+        <button class="language-btn" onclick="setLanguage('hi')">हिंदी</button>
+    </div>
+
+    <!-- Header section with title and subtitle -->
+    <div class="header">
+        <h1 id="main-title">CKD Detection System</h1>
+        <p id="subtitle">Advanced Chronic Kidney Disease Prediction</p>
+    </div>
+
+    <!-- Main container for form and results -->
+    <div class="container">
+        <div class="form-container">
+            <!-- CKD prediction form -->
+            <form id="ckd-form">
+                <div class="form-grid">
+                    <!-- Serum Creatinine input -->
+                    <div class="input-group">
+                        <label for="sc" id="label-sc">Serum Creatinine (mg/dL)</label>
+                        <input type="number" id="sc" name="sc" class="input-field" step="0.1" placeholder="0.5 - 15.0" required>
+                    </div>
+
+                    <!-- Hemoglobin input -->
+                    <div class="input-group">
+                        <label for="hemo" id="label-hemo">Hemoglobin (g/dL)</label>
+                        <input type="number" id="hemo" name="hemo" class="input-field" step="0.1" placeholder="3.0 - 18.0" required>
+                    </div>
+
+                    <!-- Albumin level dropdown -->
+                    <div class="input-group">
+                        <label for="al" id="label-al">Albumin Level</label>
+                        <select id="al" name="al" class="input-field" required>
+                            <option value="">Select Level</option>
+                            <option value="0">Normal</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <!-- Specific Gravity input -->
+                    <div class="input-group">
+                        <label for="sg" id="label-sg">Specific Gravity</label>
+                        <input type="number" id="sg" name="sg" class="input-field" step="0.001" placeholder="1.005 - 1.025" required>
+                    </div>
+
+                    <!-- Packed Cell Volume input -->
+                    <div class="input-group">
+                        <label for="pcv" id="label-pcv">Packed Cell Volume (%)</label>
+                        <input type="number" id="pcv" name="pcv" class="input-field" step="0.1" placeholder="20 - 55" required>
+                    </div>
+
+                    <!-- Red Blood Cell Count input -->
+                    <div class="input-group">
+                        <label for="rbcc" id="label-rbcc">Red Blood Cell Count (millions/μL)</label>
+                        <input type="number" id="rbcc" name="rbcc" class="input-field" step="0.1" placeholder="2.5 - 8.0" required>
+                    </div>
+
+                    <!-- Diabetes Mellitus dropdown -->
+                    <div class="input-group">
+                        <label for="dm" id="label-dm">Diabetes Mellitus</label>
+                        <select id="dm" name="dm" class="input-field" required>
+                            <option value="">Select</option>
+                            <option value="0" id="dm-no">No</option>
+                            <option value="1" id="dm-yes">Yes</option>
+                        </select>
+                    </div>
+
+                    <!-- Hypertension dropdown -->
+                    <div class="input-group">
+                        <label for="htn" id="label-htn">Hypertension</label>
+                        <select id="htn" name="htn" class="input-field" required>
+                            <option value="">Select</option>
+                            <option value="0" id="htn-no">No</option>
+                            <option value="1" id="htn-yes">Yes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit button for prediction -->
+                <button type="submit" class="predict-btn" id="predict-btn">
+                    <span id="btn-text">Predict CKD Risk</span>
+                </button>
+            </form>
+
+            <!-- Container to display prediction result -->
+            <div class="result-container" id="result-container">
+                <div class="result-title" id="result-title">Prediction Result</div>
+                <div class="result-content" id="result-content"></div>
+                <!-- Button to download prediction report -->
+                <button class="download-btn" id="download-btn" onclick="downloadReport()">Download Report</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
