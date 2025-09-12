@@ -1,7 +1,9 @@
 pandas
+numpy
 scikit-learn
 numpy
 joblib
 flask
+reportlab
 matplotlib
-
+seaborn
