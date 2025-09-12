@@ -27,22 +27,8 @@ FINAL/ ├── app.py                          # Main application file ├─�
 - **Evaluation**: Accuracy, Precision, Recall, F1 Score (see `evaluation.py`)
 
 
-#Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/CKD.git
-   cd CKD
 
-Create a virtual environment:
-python -m venv venv
-venv\Scripts\activate
-
-Install required libraries:
-pip install -r requirements.txt
-
-Run the application:
-python app.py
 
 
 
