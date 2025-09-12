@@ -3,7 +3,7 @@
 A web-based application for predicting Chronic Kidney Disease (CKD) using machine learning. This project integrates data preprocessing, model training, evaluation, and a user-friendly interface for real-time predictions.
 
 #Project Structure
-CKD/ ├── app.py                      # Main application file ├── dataset/                    # Raw or processed datasets ├── final/ │   ├── ckd_model.pkl           # Trained ML model │   └── label_encoders.pkl      # Encoders for categorical features ├── src/ │   ├── preprocess.py           # Data preprocessing logic │   ├── training.py             # Model training script │   └── evaluation.py           # Model evaluation metrics ├── static/ │   ├── css/ │   │   └── style.css           # Web styling │   └── js/ │       └── script.js           # Client-side scripting ├── templates/ │   └── index.html              # Web interface template └── preprocessed_final_ckd.csv # Preprocessed dataset
+FINAL/ ├── app.py                          # Main application file ├── dataset/                        # Raw or processed datasets ├── final/ │   ├── ckd_model.pkl               # Trained ML model │   └── label_encoders.pkl          # Encoders for categorical features ├── src/ │   ├── preprocess.py               # Data preprocessing logic │   ├── training.py                 # Model training script │   └── evaluation.py               # Model evaluation metrics ├── static/ │   ├── css/ │   │   └── style.css               # Web styling │   └── js/ │       └── script.js               # Client-side scripting ├── templates/ │   └── index.html                  # Web interface template └── preprocessed_final_ckd.csv     # Preprocessed datase
 
 #Features
 
@@ -43,6 +43,7 @@ pip install -r requirements.txt
 
 Run the application:
 python app.py
+
 
 
 
