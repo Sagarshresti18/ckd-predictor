@@ -1,29 +1,64 @@
-# Chronic Kidney Disease (CKD) Prediction
+#CKD Detection System
 
-## Project Overview
+A web-based application for predicting Chronic Kidney Disease (CKD) using machine learning. This project integrates data preprocessing, model training, evaluation, and a user-friendly interface for real-time predictions.
 
-This project predicts Chronic Kidney Disease (CKD) using machine learning on clinical and laboratory data of patients. It implements data preprocessing, handles class imbalance with SMOTE, employs Random Forest for model training, and evaluates performance using classification reports and confusion matrices. An interactive Flask serves as a user-friendly interface for real-time CKD risk prediction.
+#Project Structure
+CKD/ 
+├── app.py                      # Main Flask application 
+├── dataset/                    # Raw or processed datasets 
+├── final/ 
+   ├── ckd_model.pkl           # Trained ML model    
+   └── label_encoders.pkl      # Encoders for categorical features 
+├── src/ 
+   ├── preprocess.py           # Data preprocessing logic    
+   ├── training.py             # Model training script   
+   └── evaluation.py           # Model evaluation metrics 
+├── static/ 
+   ├── css/style.css           # Styling for the web interface 
+   └── js/script.js            # Client-side interactivity 
+├── templates/ 
+   └── index.html              # Main HTML page 
+└── preprocessed_final_ckd.csv # Preprocessed dataset
+└── requirements.txt
 
-Early prediction of CKD is crucial for timely intervention and improving patient outcomes. This repository provides a modular, reproducible, and extensible framework for CKD detection using ML.
+#Features
 
-## Features
+- Predict CKD risk based on medical inputs
+- Multi-language support (English, Kannada, Hindi)
+- Downloadable prediction report (PDF)
+- Responsive UI with animated background
+- Model evaluation and training scripts included
 
-- Data loading and cleaning
-- Handling class imbalance with SMOTE
-- Model training with Random Forest
+#Tech Stack
 
-## Installation
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Flask
+- **ML**: scikit-learn, pandas, numpy
+- **PDF Generation**: ReportLab
+
+#Model Details
+
+- **Algorithm**: Random Forest
+- **Training Data**: `preprocessed_final_ckd.csv`
+- **Evaluation**: Accuracy, Precision, Recall, F1 Score (see `evaluation.py`)
+
+
+#Installation
+
 1. Clone the repository:
-git clone https://github.com/Sagarshresti18/ckd-predictor.git
-cd ckd-predictor
-2. (Optional) Create a virtual environment:
+   ```bash
+   git clone https://github.com/your-username/CKD.git
+   cd CKD
+
+Create a virtual environment:
 python -m venv venv
-source venv/bin/activate # On Windows: venv\Scripts\activate
-3. Install required dependencies:
+venv\Scripts\activate
+
+Install required libraries:
 pip install -r requirements.txt
 
-
-
+Run the application:
+python app.py
 
 
 
