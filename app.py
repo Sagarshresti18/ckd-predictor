@@ -14,9 +14,12 @@ warnings.filterwarnings('ignore')
 
 app = Flask(__name__)
 
+MODEL_PATH = os.environ.get('MODEL_PATH', 'final/ckd_model.pkl')
+FEATURE_NAMES = os.environ.get('FEATURE_NAMES', 'sc,hemo,al,sg,pcv,rbcc,dm,htn').split(',')
+
 # Load trained model
 try:
-    model = joblib.load("final/ckd_model.pkl")
+    model = joblib.load(MODEL_PATH)
     print("Model loaded successfully!")
 except FileNotFoundError:
     print("Warning: Model file not found. Using fallback prediction method.")
@@ -195,7 +198,7 @@ def predict():
             form_data = request.form.to_dict()
         
         # Validate required fields
-        required_fields = ['sc', 'hemo', 'al', 'sg', 'pcv', 'rbcc', 'dm', 'htn']
+        required_fields = FEATURE_NAMES
         for field in required_fields:
             if field not in form_data or form_data[field] == '':
                 return jsonify({
@@ -417,3 +420,4 @@ if __name__ == '__main__':
     
     # Run the Flask app
     app.run(debug=True)
+
