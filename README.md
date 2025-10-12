@@ -1,38 +1,89 @@
-#CKD Detection System
+# CKD Detection System
 
-A web-based application for predicting Chronic Kidney Disease (CKD) using machine learning. This project integrates data preprocessing, model training, evaluation, and a user-friendly interface for real-time predictions.
+A web-based application for predicting Chronic Kidney Disease (CKD) using a machine learning model. This project includes data preprocessing, model training, and a user-friendly interface for real-time predictions.
 
-#Project Structure
-FINAL/ ├── app.py                          # Main application file ├── dataset/                        # Raw or processed datasets ├── final/ │   ├── ckd_model.pkl               # Trained ML model │   └── label_encoders.pkl          # Encoders for categorical features ├── src/ │   ├── preprocess.py               # Data preprocessing logic │   ├── training.py                 # Model training script │   └── evaluation.py               # Model evaluation metrics ├── static/ │   ├── css/ │   │   └── style.css               # Web styling │   └── js/ │       └── script.js               # Client-side scripting ├── templates/ │   └── index.html                  # Web interface template └── preprocessed_final_ckd.csv     # Preprocessed datase
+## Features
 
-#Features
+-   **CKD Prediction:** Predicts the risk of CKD based on user-provided medical data.
+-   **User-Friendly Interface:** A simple web interface for entering patient data.
+-   **PDF Report Generation:** Generates a downloadable PDF report of the prediction results.
+-   **Fallback Prediction:** Includes a rule-based fallback mechanism for predictions if the machine learning model is unavailable.
 
-- Predict CKD risk based on medical inputs
-- Multi-language support (English, Kannada, Hindi)
-- Downloadable prediction report (PDF)
-- Responsive UI with animated background
-- Model evaluation and training scripts included
+## Tech Stack
 
-#Tech Stack
+-   **Backend:** Flask
+-   **Frontend:** HTML, CSS, JavaScript
+-   **Machine Learning:** scikit-learn, pandas, numpy
+-   **PDF Generation:** ReportLab
 
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Flask
-- **ML**: scikit-learn, pandas, numpy
-- **PDF Generation**: ReportLab
+## Project Structure
 
-#Model Details
+```
+.
+├── app.py                      # Main Flask application
+├── requirements.txt            # Project dependencies
+├── dataset/
+│   └── final.csv               # Raw dataset
+├── final/
+│   ├── ckd_model.pkl           # Trained machine learning model
+│   └── label_encoders.pkl      # Saved label encoders
+├── src/
+│   ├── preprocess.py           # Data preprocessing script
+│   ├── train.py                # Model training script
+│   └── evaluation.py           # Model evaluation script
+├── static/
+│   ├── css/
+│   └── js/
+└── templates/
+    └── index.html              # HTML template for the web interface
+```
 
-- **Algorithm**: Random Forest
-- **Training Data**: `preprocessed_final_ckd.csv`
-- **Evaluation**: Accuracy, Precision, Recall, F1 Score (see `evaluation.py`)
+## Setup and Installation
 
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/ckd-detection-system.git
+    cd ckd-detection-system
+    ```
 
+2.  **Create and activate a virtual environment:**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
 
+3.  **Install the dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
+4.  **Run the preprocessing and training scripts (optional, as the trained model is provided):**
+    ```bash
+    python src/preprocess.py
+    python src/train.py
+    ```
 
+5.  **Run the Flask application:**
+    ```bash
+    python app.py
+    ```
 
+6.  Open your web browser and navigate to `http://127.0.0.1:5000/`.
 
+## Usage
 
+1.  Enter the patient's medical data in the web interface.
+2.  Click the "Predict" button to get the CKD risk prediction.
+3.  Download the PDF report for a detailed summary of the results.
 
+## Model Details
 
+-   **Algorithm:** Random Forest Classifier
+-   **Features:** Serum Creatinine, Hemoglobin, Albumin, Specific Gravity, Packed Cell Volume, Red Blood Cell Count, Diabetes Mellitus, Hypertension
+-   **Training Data:** `preprocessed_final_ckd.csv`
 
+## Scripts
+
+-   `src/preprocess.py`: This script loads the raw data from `dataset/final.csv`, performs label encoding on categorical features, and saves the processed data and encoders.
+-   `src/train.py`: This script trains a Random Forest model on the preprocessed data and saves the trained model to `final/ckd_model.pkl`.
+-   `src/evaluation.py`: This script evaluates the trained model using various metrics and generates a classification report and confusion matrix.
