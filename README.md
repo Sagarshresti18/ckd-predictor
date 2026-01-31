@@ -68,7 +68,7 @@ A web-based application for predicting Chronic Kidney Disease (CKD) using a mach
     python app.py
     ```
 
-6.  Open your web browser and navigate to `http://127.0.0.1:5000/`.
+6.  Open your web browser and navigate to `http://127.0.0.1:5000/`
 
 ## Usage
 
